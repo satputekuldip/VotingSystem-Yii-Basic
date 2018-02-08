@@ -9,42 +9,80 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
+//$this->registerCssFile('Login_CSS/vendor/bootstrap/css/bootstrap.min.css');
+$this->registerCssFile('Login_CSS/fonts/font-awesome-4.7.0/css/font-awesome.min.css');
+$this->registerCssFile('Login_CSS/fonts/iconic/css/material-design-iconic-font.min.css');
+$this->registerCssFile('Login_CSS/vendor/animate/animate.css');
+$this->registerCssFile('Login_CSS/vendor/css-hamburgers/hamburgers.min.css');
+$this->registerCssFile('Login_CSS/vendor/animsition/css/animsition.min.css');
+$this->registerCssFile('Login_CSS/vendor/select2/select2.min.css');
+$this->registerCssFile('Login_CSS/vendor/daterangepicker/daterangepicker.css');
+$this->registerCssFile('Login_CSS/css/util.css');
+$this->registerCssFile('Login_CSS/css/main.css');
+
+$this->registerJsFile('Login_CSS/vendor/jquery/jquery-3.2.1.min.js');
+$this->registerJsFile('Login_CSS/vendor/animsition/js/animsition.min.js');
+$this->registerJsFile('Login_CSS/vendor/bootstrap/js/popper.js');
+//$this->registerJsFile('Login_CSS/vendor/bootstrap/js/bootstrap.min.js');
+$this->registerJsFile('Login_CSS/vendor/select2/select2.min.js');
+$this->registerJsFile('Login_CSS/vendor/daterangepicker/moment.min.js');
+$this->registerJsFile('Login_CSS/vendor/daterangepicker/daterangepicker.js');
+$this->registerJsFile('Login_CSS/vendor/countdowntime/countdowntime.js');
+$this->registerJsFile('Login_CSS/js/main.js');
+
 ?>
+<div class="site-login" style="background-image: url('Login_CSS/images/bg-01.jpg');">
+    <div class="limiter">
+        <div class="container-login100">
+            <div align="center">
+                <div class="wrap-login100">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
 
-<div class="jumbotron">
-    <div class="row">
-        <div class="center-block">
-            <div class="site-login">
-                <h1><?= Html::encode($this->title) ?></h1>
+                    <span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
 
-                <p>Please fill out the following fields to login:</p>
+                    <p style="color: #fff;">Please fill out the following fields to login:</p>
+                    <?php $form = ActiveForm::begin([
+                        'id' => 'login-form',
+                        'layout' => 'horizontal',
+                        'fieldConfig' => [
+                            'template' => "<div  data-validate=\"Enter username\">{input}</div>",
+                            'labelOptions' => ['class' => 'col-lg-1 control-label'],
 
-                <?php $form = ActiveForm::begin([
-                    'id' => 'login-form',
-                    'layout' => 'horizontal',
-                    'fieldConfig' => [
-                        'template' => "{label}\n<div class=\"col-lg-6\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-                        'labelOptions' => ['class' => 'col-lg-1 control-label'],
-                    ],
-                ]); ?>
+                        ],
+                        'class' => 'login100-form validate-form',
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class'=> 'col-lg-offset-5']) ?>
+                    ]); ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <?= $form->field($model, 'username')->textInput(['class' => 'input100', 'placeholder' => 'Username']) ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox([
-                    'template' => "<div class=\"col-lg-offset-5 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-                ]) ?>
 
-                <div class="form-group">
-                    <div class="col-lg-offset-5 col-lg-11">
-                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                     </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <?= $form->field($model, 'password')->passwordInput(['class' => 'input100', 'placeholder' => 'Password']) ?>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <?= $form->field($model, 'rememberMe')->checkbox([
+                            'template' => "<div class=\"input-checkbox100\" id=\"ckb1\">{input} {label}</div><div id=\"ckb1\" class=\"input-checkbox100\">{error}</div>",
+                        ]) ?>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="container-login100-form-btn">
+                            <?= Html::submitButton('Login', ['class' => 'login100-form-btn', 'name' => 'login-button']) ?>
+                        </div>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
                 </div>
-
-                <?php ActiveForm::end(); ?>
-
-
             </div>
         </div>
     </div>
