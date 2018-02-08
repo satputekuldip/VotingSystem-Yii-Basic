@@ -1,34 +1,48 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
 /* @var $this yii\web\View */
-/* @var $model app\models\Voter */
-/* @var $form ActiveForm */
+
+use yii\helpers\Html;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
+
+$this->title = 'Sign Up';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-signup">
-    <div class="col-lg-8" style="width: 70%">
+<div class="site-about">
+    <h1><?= Html::encode($this->title) ?></h1>
 
-        <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'user_id') ?>
-        <?= $form->field($model, 'UID') ?>
-        <?= $form->field($model, 'first_name') ?>
-        <?= $form->field($model, 'middle_name') ?>
-        <?= $form->field($model, 'last_name') ?>
-        <?= $form->field($model, 'contact_no') ?>
-        <?= $form->field($model, 'email') ?>
-        <?= $form->field($model, 'state_id') ?>
-        <?= $form->field($model, 'dist_id') ?>
-        <?= $form->field($model, 'city_id') ?>
-        <?= $form->field($model, 'address1') ?>
-        <?= $form->field($model, 'address2') ?>
-        <?= $form->field($model, 'pincode') ?>
 
-        <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
-        </div>
-        <?php ActiveForm::end(); ?>
+    <div class="jumbotron">
+        <h1>Sign Up For!</h1>
+
+        <p>
+            <?= Html::button('Voter', ['value' => Url::to('index.php?r=voter/create'), 'class' => 'btn btn-raised btn-success', 'style'=>'width: 200px; height: 60px', 'id'=>'voterRegistration']) ?><span/>
+            <?= Html::button('Candidate', ['value' => Url::to('index.php?r=candidate/create'), 'class' => 'btn btn-raised btn-success', 'style'=>'width: 200px; height: 60px', 'id'=>'candidateRegistration']) ?>
+        </p>
+
+        <?php
+        Modal::begin([
+            'header' => '<h4>Voter</h4>',
+            'id' => 'modalVoter',
+            'size' => 'modal-lg'
+        ]);
+        echo "<div id='modalVoterContent'></div>";
+        Modal::end();
+        ?>
+
+        <?php
+        Modal::begin([
+            'header' => '<h4>Candidate</h4>',
+            'id' => 'modalCandidate',
+            'size' => 'modal-lg'
+        ]);
+        echo "<div id='modalCandidateContent'></div>";
+        Modal::end();
+        ?>
+
+
     </div>
-</div><!-- site-signup -->
+
+</div>

@@ -30,7 +30,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         //'js/jquery.prettyPhoto.js',
-        //'js/main.js'
+        'js/main.js'
         //'js/material.min.js',
         //'js/bootstrap.min.js'
         //'js/ripples.min.js'
