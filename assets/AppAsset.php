@@ -34,7 +34,7 @@ class AppAsset extends AssetBundle
         //'js/material.min.js',
         //'js/bootstrap.min.js'
         //'js/ripples.min.js'
-        'js/site.js'
+        //'js/site.js'
 
     ];
     public $depends = [
